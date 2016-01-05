@@ -4,3 +4,6 @@ kill 命令可以关闭进程
 ps查看进程
 read pdf file use the command evince filename
 翻墙方法SSH+autoproxy-firefox
+静态变量static 生命周期与所定义的区域相同
+使用条件包含预防重复包含关系，包含不同版本的头文件
+寄存器变量 定义反复使用的变量
