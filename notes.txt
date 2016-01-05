@@ -1,2 +1,6 @@
 注意键盘输入的结束是ctrl+d
 EO
+kill 命令可以关闭进程
+ps查看进程
+read pdf file use the command evince filename
+翻墙方法SSH+autoproxy-firefox
