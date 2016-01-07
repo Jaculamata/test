@@ -1,0 +1,8 @@
+制作U盘启动器：
+windows：ultraiso做一个 放入镜像文件即可,注意label的一致性
+linux：http://blog.csdn.net/l0605020112/article/details/20048899
+
+wget：
+下载http https ftp文件
+
+

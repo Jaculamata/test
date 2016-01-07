@@ -7,3 +7,14 @@ read pdf file use the command evince filename
 静态变量static 生命周期与所定义的区域相同
 使用条件包含预防重复包含关系，包含不同版本的头文件
 寄存器变量 定义反复使用的变量
+the format argunebt can be an expression too
+http://www.study-area.org/network/network.htm
+
+http://www.study-area.org/
+制作U盘启动：镜像文件+u盘->将文件刻录到U盘中
+P92鸟哥私房菜为什么没有hdb4?
+IDE:用来传递硬盘数据的汇流界面
+共有IDE1,IDE2,分别有master与slave 共4个IDE装置
+Primary+extended 最多有四个
+extend不能直接使用
+partition+format磁盘分割过程包括
