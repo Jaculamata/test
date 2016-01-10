@@ -13,8 +13,63 @@ http://www.study-area.org/network/network.htm
 http://www.study-area.org/
 制作U盘启动：镜像文件+u盘->将文件刻录到U盘中
 P92鸟哥私房菜为什么没有hdb4?
-IDE:用来传递硬盘数据的汇流界面
-共有IDE1,IDE2,分别有master与slave 共4个IDE装置
-Primary+extended 最多有四个
-extend不能直接使用
-partition+format磁盘分割过程包括
+swap虚拟内存：当有数据被存放在物理内存里，但这些数据又不是常被CPU所取用，这些不常被使用程序会被丢到虚拟内存中`
+
+虚拟桌面
+ctrl+alt+Ｆ1-6终端切换 Ｆ6切回图形界面
+ tab 命令补全，档案补齐
+ctal+d EOF
+shell使用者接口
+man page 第一行的括号代表了指定或档案的基本含义
+man -k按关键字查找 -f更多相关信息
+whatis 相当于man -f
+who 目前有谁在线
+netstat -a网络联机状态
+ps 查看进程 -aux后台进程
+sync数据写入磁盘
+chgrp改变群组
+chown 改变档案所熟人
+chmod改变属性 UID
+chmod a/u|g|o+/-/=r|w|x
+last 读取data file
+文件能否被执行，只与属性有关，与名字无关
+目录树 directory tree
+. 当前目录 ..上层目录
+
+
+
+A
+A
+A
+B
+B
+B
+A
+A
+A
+B
+B
+B
+FHS filesystem Hierarchy
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+B
+B
+B
+B
+B
+B
+B
+B
+B
+chmod a/u/g/o+/-/=r|w|x
+netstate网络联机状态
