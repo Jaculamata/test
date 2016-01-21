@@ -1,3 +1,4 @@
+c
 注意键盘输入的结束是ctrl+d
 EO
 kill 命令可以关闭进程
@@ -20,7 +21,89 @@ ctrl+alt+Ｆ1-6终端切换 Ｆ6切回图形界面
  tab 命令补全，档案补齐
 ctal+d EOF
 shell使用者接口
+
+源代码经预处理器插入#include指定的文件 并扩展#define指定的宏
+编译器产生两个源代码的汇编代码
+汇编器经汇编代码转化成二进制目标文件
+链接器将目标文件和代码合并并产生最终可执行代码
+
+
+挂载指令 mount
+特殊装置loop挂载 压缩dd 格式化mke2fs 挂载mount -o loop参数
+
+建立虚拟内存或虚拟内存档案：mkswap swapon swapoff
+休眠模式 运作中的程序状态会被记录在swap中
+如何增加一颗新的硬盘在linux系统中 Ｐ290
+
+绝对路径：一定由根目录开始
+相对路径：不由/开始
+
+mkdir -m 设定权限无视umask
+-p 递归建立目录
+
+环境变量ＰＡＴＨ
+当我们执行一个指令时，系统会依照path的设定去path定义的路径下搜寻执行文件
+  规范指令搜寻的目录
+新增路径PATH="$PATH":/root（所需的路径）
+路径中先搜到的先执行
+
+绝对路径比相对路径更正确，相对路径可能会使用PATH
+
+cp -a 将档案的所有属性一起复制
+
+basename最后的文档名
+dirname 目录名
+
+cat
+由第一行开始显示档案内容
+• tac
+从最后一行开始显示,可以看出 tac 是 cat 的倒着写!
+• nl
+显示的时候,顺道输出行号!
+• more 一页一页的显示档案内容
+• less 与 more 类似,但是比 more 更好的是,他可以往前翻页!
+• head 只看头几行
+• tail 只看尾巴几行
+• od
+以二进制的方式读取档案内容
+
+touch 修改档案时间和新建档案
+档案预设权限 umask：指定的是该默认值需要剪掉的权限
+档案的预设属性：-rw-rw-rw-
+目录的预设属性：drwxrwxrwx
+目录的x权限指进入目录
+
+chattr设定档案隐藏属性
+Set UID 让一般使用者在执行某些程序时，能够暂时拥有该程序拥有者的权限只用于binaryfile
+Set GID s权限在group中设定在binary file时在执行程序时，他的有效群组变成该程序的群组所有人；也可以设定在目录上，表示该目录内的文件或目录都是该目录的群组
+Sticky Bit只针对目录有效
+在具有
+SBit 的目录下,使用者若在该目录下具有 w 及 x 的权限, 则当使用者在该目录下建立档案或目录时,
+只有档案拥有者与 root 才有权力删除
+s,t 设置成功
+S,T代表无法执行
+
+档案类型查询 file
+
+which 根据环境变量规定的路径搜寻文档名
+whereis 寻找特定档案  一定格式 针对数据库档案进行搜索
+find [PATH] [option] [action]
+-exec  找到内容后执行的操作以\;结束 find比较消耗硬盘
+压缩原理：重复或者空 丢出或用特殊形式表示
+tar 打包
+gzip，bzip2 压缩
+lsattr 显示档案隐藏属性
+
+malloc return a pointor to void then coercethe pointer into desired type
+:q
+
+/bin 放置使用者可执行binary file
+/etc/ /sbin/ /bin/ /dev/ /lib/与root partition放在相同partition中
+因为linux系统在开机时，只会挂载一个partition 那就是/ 开机时会用到很多指令和函式库
+linux使用VFS管理档案系统
 man page 第一行的括号代表了指定或档案的基本含义
+intel 处理器系列俗称x86
+向后兼容的特性
 man -k按关键字查找 -f更多相关信息
 whatis 相当于man -f
 who 目前有谁在线
@@ -35,41 +118,28 @@ last 读取data file
 文件能否被执行，只与属性有关，与名字无关
 目录树 directory tree
 . 当前目录 ..上层目录
+etc 系统的设定档案
+etc/init.d 系统开机加载服务的scripts的摆放地点
+boot 开机设定档 预设摆放vmlinuz的地方
+bin 一般执行档
+sbin 系统管理员长于指令集
+dev 系统装置档案
+var/log 系统登陆档案
+.开头为隐藏档 ls -a可以查看
+磁盘分割 记录每一个分区的开始和结束磁柱 记录在MBR 主要开机扇区中
+将partition格式化为我的操作系统认识的档案系统
+sector最小物理存储区块 512Bytes
+block最小逻辑存储区块sector的2的次方
+block 划分考虑读取效能和可能造成的空间浪费
+每个partition就是一个档案系统 每个档案系统开始的那个block就是superblock 记录关于该档案系统的一些信息 如大小 空满状态等
 
-
-
-A
-A
-A
-B
-B
-B
-A
-A
-A
-B
-B
-B
+inode 档案属性  block档案内容 inode不记录文件名 记录在目录所属的block区域
+block大小越大，inode越少，大档案写入效率较佳，可能浪费的空间越多
+inode 大小128byte
+档案太过离散，读取效率低下，可将整个partition内数据全部复制出来，在将partition重新格式化。再将数据给他复制回去
+日志式档案系统  透明性原则的使用
 FHS filesystem Hierarchy
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-B
-B
-B
-B
-B
-B
-B
-B
-B
 chmod a/u/g/o+/-/=r|w|x
 netstate网络联机状态
+
+
