@@ -1,4 +1,52 @@
-c
+G移动到这个档案的最后一行
+nG移动到这个档案的第n行
+gg移动到第一行
+GG移动到最后一行
+/word 光标之后查找word
+？word 光标之前查找word
+n1,n2s/word1/word2/g between n1 and n2 replace word1 with word2 
+1,$s/word1/word2/g from first line to last line replace word1 with word2
+dd delete the line 
+ndd delete the next n lines
+d1G delete from where the curse is to the first line
+dG delete from where the curse is to the last line
+d$ delete from where the curse is to last char of this line
+d0 delete from where the curse is to the first char of this line
+yy similar to dd but it's copy
+
+p,P paste in the next line and in the last line
+:w [filename] save as
+:r [filename] read file and add next to the current curse
+:n1,n2 w [filename] save the content between n1 and n2 as [filename]
+:! command   leave temporarily and run the command such as ::! ls /home
+:set number(or nu) show the line number
+:set nonu hide the line number
+visual block :
+v:every char
+V:evert line
+ctrl+v:select in the form of rectangle
+y:copy the block
+d:delete the block
+多档案编辑 vim filenames1 filenames2 。。。
+：n next file ;:N last file;:files list all the files opened 
+
+multi-windows:
+:sp filename
+ctrl+w change window
+
+vim record your activities by the file ~/.viminfo
+when you enter your file again ,the curse with stop right at the place where you leave recently
+vim环境设定参数：
+un--nonu 显示/隐藏行号
+autoindent--noautoindent 自动缩进
+backup 备份
+ruler状态列说明
+showmode 显示状态列
+backpace=（012) 设为2时可以任意删除值 0或1时仅可以删除刚刚输入的字符
+syntax (off/on) 依据程序相关语法显示不同颜色，并检测语法错
+
+git clean -f 清除为跟踪文文件
+
 注意键盘输入的结束是ctrl+d
 EO
 kill 命令可以关闭进程
