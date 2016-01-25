@@ -1,0 +1,47 @@
+algorithms is a sequence of computational steps that transform the input into the output
+which algorithm is the best for a given application depends on the number of items,the extent to which the items are already somewhat sorted, possible restriction on the item values, the architecture of the computer, and the kind of storage devices to be used: main memory,disks,or even tapes.
+
+NP-complete problems:
+like traveling-salesman problem 
+
+GUI graphical user interface
+advanced computer architectures and fabrication technologies
+object-oriented systems
+integrated Web technologies
+fast networking 
+
+2 Getting Started
+2.1 Insertion sort
+  Software Engineering:
+	data abstraction
+	modularity
+	error handling
+  pseudocode:clear concise
+INSERTION-SORT(A)
+  for j=2 to A.length
+  	key=A[j];
+	i=j-1;
+	while i>0and A[i]>key
+		A[i+1]=A[i];
+		i=i-1;
+	A[i+1]=key
+loop invariants:
+Initialization,Maintenance,Termination
+
+Pseudocode conventions:
+	Indentation indicates block structure
+	// means comment
+	variables are local to the given procedure
+	organize compound data into objects ,which are
+	  composed of attributes
+	pass parameters by value
+	arrays are passed by pointer
+	allow multiple values to be returned in a single return statement
+	boolean operators "and" and "or" are short circuiting
+exercises:
+2.1-3
+	LINEAR-SEARCH(A,v)
+	  i=0;
+	 do
+	   i=i+1;
+	  while(A[i]!=v and i<i.length)
