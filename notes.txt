@@ -174,6 +174,28 @@ sort [-fbMnrtuk] [file or stdin]
 uniq 唯一显示 与sort同时使用时，排序后重复的资料进显示一次 -i 忽略大小写
       -c 进行计数
 wc 计算输出的信息的整体信息 -l :行数 -w：英文单字数 -m：字符数
+tee:双向重导向 将数据流分送到档案与屏幕去即stdout stdout 可以让下个指令继续处理
+
+字符转换命令：
+tr 删除一段信息中的文字或者进行替换
+col -x 将tab 转换成对等的空格键
+join 两个档案中有相同数据的那一行，将他们加一起
+paste 将两行贴在一起，中间以tab键隔开
+expand 将tab键转换成空格键
+
+分割命令：
+split将一个大档案，依据大小或行数来分割
+split -b 300k /etc/termcap termcap(前导文字，小档案以termcapa，termcapb...命名）
+将数据流重导向：cat termcap*>>termcapback
+文件源需要stdout/stdin时  用-表示档案
+
+参数代换:xargs
+以空格符作为分隔，读入stdin的数据
+
+正则表达式：or 正规表达法
+通过一些特殊字符的排列，用以搜寻/取代/删除 一列或多列文字字符串
+过滤分析功能
+剔除垃圾/广告软件
 
 
 G移动到这个档案的最后一行
@@ -378,4 +400,11 @@ inode 大小128byte
 FHS filesystem Hierarchy
 chmod a/u/g/o+/-/=r|w|x
 netstate网络联机状态
+
+
+
+
+
+
+
 
