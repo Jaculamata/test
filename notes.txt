@@ -196,7 +196,10 @@ split -b 300k /etc/termcap termcap(前导文字，小档案以termcapa，termcap
 通过一些特殊字符的排列，用以搜寻/取代/删除 一列或多列文字字符串
 过滤分析功能
 剔除垃圾/广告软件
-
+正规表达法是处理字符串的一个标准表示方式，需要支持的工程工具来辅助
+字符串截取工具 grep
+grep [-acinv] 'strings' filename
+以整行为单位
 
 G移动到这个档案的最后一行
 nG移动到这个档案的第n行
