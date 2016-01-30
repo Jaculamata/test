@@ -35,3 +35,186 @@ awk 处理每一行的字段内数据  	预设的分隔符是空格键和tab键
 $1 $2 第一栏，第二栏... $0 一整列
 内建变量 NF每一行拥有的字段总数，NR目前所处理的第几行，FS目前的分隔字符，预设空格键
 
+档案比对：
+diff [-bBi] from-file to-file 以行为单位进行比对
+cmp [-s] file1 file2 以位为单位进行比对
+patch 将旧内容更新到新版本
+pr 档案打印准备
+
+
+shell script
+利用shell的功能所写的一个程序，使用纯文字文件，讲一些shell的语法与指令写在里面，搭配正规表示法，管线命令与数据流重导向功能，以达到所需的目的
+
+自动化管理：
+查询登陆档，追踪流量，监控使用者使用主机状态，主机各项硬件设备状态，主机软件更新查询应付其他使用者的突然要求
+追踪与管理系统的重要工作：
+简单入侵侦测功能：
+连续指令单一化：
+简单的数据处理：
+跨平台支持与学习历程较短
+shell script 用的是外部的指令与bash shell的一些预设工具，常常会去呼叫外部的函式库，，但是运算速度比不上传统的程序语言
+
+shell scripts:
+第一行#！宣告这个脚本的名称
+程序内容的宣告
+主环境变量的宣告
+主要程序部分
+执行成果告知 exit 一个数字 0表示正常退出程序
+
+scrpit撰写习惯：
+功能，版本信息，作者与联络方式，版权宣告方式，History历史记录
+较特殊的指令，使用绝对路径
+运作时需要的环境变量预先宣告和设定
+
+数学运算式 var=$((运算内容))
+
+test -e [filename] && echo "exist" || echo "not exist"
+测试文件是否存在
+还有更多功能
+
+判断符号:[]
+[ -z "$HOME" ]
+[ "$HOME" == "$MAIL" ]
+上述的每个组件中间都需要有空格键来分隔
+
+条件判断：
+if [judgement];then   //[]要打出来
+ statement
+fi
+
+if [条件判断式]; then
+ 进行的指令工作内容
+ else
+  进行的指令内容
+ fi
+也可以进行嵌套
+if ;then
+elif;then
+else
+fi
+
+
+shell script 预设变数($0,$1...)
+如：
+/etc/init.d/crond restart
+  $0                $1       $2   ....
+
+netstat 查询目前主机有开启的网络服务端口口
+  常见的port与相关网络服务：
+  80:WWW
+  22:ssh
+  21:ftp
+  25:mail
+  using netstat and grep to detect WWW,SSH,FTP and Mail services
+
+case $变量名称 in
+	"第一个变量内容“)
+	程序短
+	;;
+	"第二个变量内容")
+	程序段
+	;;
+	*)
+	不包含第一个变量内容与第二个变量内容的其他程序执行段
+	exit 1
+	;;
+esac
+
+循环：loop
+while do done,until do done
+for((i=1;i<=100;i=i+1)) do done
+for var in con1 con2 con3...
+do
+	程序段
+done
+
+sh [-nvx] scripts.sh
+-n 不执行，仅查询语法
+-v 执行前将scripts的内容输出到屏幕上
+-x 将script内容显示到屏幕上
+多看多模仿并修改成自己的样式
+
+pwd 目前所在目录
+whoami 目前的身份
+
+
+linux帐号管理与身份管理
+使用者ID UID
+群组足ID GID
+
+登入linux:
+通过/etc/passwd 查询帐号是否存在，然后读取UID GID 家目录和shell设定
+在/etc/shadow核对密码表
+
+UID范围：
+0 系统管理员
+1~499  保留给系统使用的ID 1-99保留给系统预设的帐号 100-499保留给一些服务来使用
+500以上 给一般使用者使用
+GID /etc/group 用来规范group
+
+/etc/shadow
+:分隔 九段：
+1.帐号名称
+2.经过编码的密码（密码栏第一个字符如果是*或! 表示这个帐号不会被用来登陆
+3.更动密码的日期（以1970.1.1作为1)，
+4.密码不可被更动的天数
+5.密码需要重新变更的天数（99999表示不需要），
+6.密码需要变更期限前的警告期限
+7.密码过期宽恕时间（过期后的n天内还是可以登陆）
+8.帐号失效日期
+9.保留字段
+
+GID:
+冒号分隔四栏
+1.群组名称
+2.群组密码
+3.GID
+4.支持帐号名称 加入这个群组里的所有帐号
+
+初始群组：当使用者一登入系统，立刻就拥有这个群组的相关权限
+有效群组 groups查询 第一个为有效群组 在有效群组下建立的新档案的群组为该有效群组
+变更有效群组 newgrp
+
+/etc/gshadow  让那些不在群组中的成员，临时 加入该群组
+
+帐号管理：
+useradd [-u UID] [-g initial_group] [-G other_group] -[Mm] [-c 说明栏] [-d home] [-s shell] username
+相关设定档 /etc/default/useradd  使用useradd去新增使用者时，按照此文档作为参考
+使用者家目参考
+使用者UID/GID 设定档在 /etc/login.defs里面
+
+
+useradd在建立linux上的帐号时 至少会参考
+/etc/default/useradd
+/etc/login.defs
+/etc/skel/*
+
+设定密码：passwd [useraccount]
+usermod 对帐号的细节部分进行修改
+userdel 删除使用者 
+将/etc/shadow 倒数第一个字段设定为0,可以让该帐号无法使用，但相关数据可以保留
+
+一般身份使用者常用帐号数据变更指令chsh  chfn
+
+finger 查询帐号信息
+id 查询UID/GID
+
+新增与移除群组：
+groupadd groupmod groupdel gpasswd newgrp
+
+使用者身份切换：
+尽量以一般身份使用者来操作
+用较低权限启动系统服务
+直接用su 输入密码后进入root 此时原有的环境变量不改变 su - 则会改变原有的环境变量
+su [-lcm] [username]
+su的方式很危险，因为使用者必须知道root的密码，这太危险
+sudo解决这问题：
+让具有sudo权限的使用者使用自己的密码，进行身份切换，执行后面的命令
+在/etc/sudoers 判断使用者是否有sudo权限
+sudo [-u [usrname|#uid]] command
+用visudo编辑 /etc/sudoers 内部语法：
+使用者帐号 登入的主机=（可以变换的身份）可以下达的指令在使用者字段前加上%表示群组
+%wheel ALL = (ALL) NOPASSWD: ALL
+wheel群组内的所有文件，不论来自何方，他可以变换成任何帐号
+
+
